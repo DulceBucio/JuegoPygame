@@ -65,13 +65,13 @@ mor = cargaranim("morgan/morgan_", ".png", 5)
 
 def Morgan(escena):
     global activo
-    print("Morgan Inicia")
     fondomor = image.load("fondomorgan.png")
     fondomor = transform.scale(fondomor, (800,600))
     mixer.music.load("soundtrack1.mp3")
     ace_normal = image.load("aceotrave.png")
     ace_normal = transform.scale(ace_normal, (200, 200))
     mixer.music.play(-1)
+    print("Morgan Inicia")
     while True:
         screen.fill((255,255,255))
         ex, ye = 0,0
