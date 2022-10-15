@@ -1,3 +1,4 @@
+from pickle import FALSE
 from pygame import *
 import sys, time
 import random
@@ -78,25 +79,45 @@ def Morgan(escena):
     ace_normal = transform.scale(ace_normal, (200, 200))
     #mixer.music.play(-1)
     mostrara1 = False
+    mostraracet = True
     teclas = ""
     num = random.randint(1,2)
     solucion = ("d"*num + "a"*num) * 3
+    paso = 0
     while True:
         screen.fill((255,255,255))
         for e in event.get():
-            if e.type == KEYDOWN and e.key == K_p: return 3
+            if e.type == KEYDOWN and K_p: 
+                if paso == 1: return 3
+                elif paso == 2: return 2
             if e.type == KEYDOWN: 
                 mostrara1 = True
+                mostraracet = False
                 teclas = teclas + chr(e.key)
                 print(teclas)
         screen.blit(fondomor, (0,0))
-        screen.blit(ace_normal, (200,250))
+        if mostraracet: screen.blit(ace_normal, (200,250))
+        else: mostraracet = False 
         if mostrara1:
             mostraranim(acem, 10, 300, 350)
-        if teclas == solucion: print("si")
+        if len(teclas) == len(solucion):
+            mostraracet = True
+            mostrara1 = False
+            if teclas == solucion:
+                ins4 = pirateFont.render("Felicidades pirata, puedes continuar!", True, (255,255,255))
+                screen.blit(ins4, (200, 500))
+                paso = 1
+            else: 
+                ins5 = pirateFont.render("Morgan sigue muy fuerte! Vuelve a intentarlo", True, (255,255,255))
+                screen.blit(ins5, (150, 500))
+                paso = 2 
         #load
         ins1 = pirateFont.render(solucion, True, (255,255,255))
-        screen.blit(ins1, (300, 10))
+        ins2 = pirateFont.render("Usa las teclas: ", True, (255,255,255))
+        ins3 = pirateFont.render("para derrotar a Morgan!", True, (255,255,255))
+        screen.blit(ins1, (300, 40))
+        screen.blit(ins2, (300,10))
+        screen.blit(ins3, (250, 70))
         display.flip()
 def Vista(escena):
     global activo
