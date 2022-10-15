@@ -29,7 +29,7 @@ def Inicio(escena):
        screen.fill((255,255,255))
        for e in event.get():
            if e.type == QUIT: sys.exit()
-           if e.type == KEYDOWN and K_a: ins = False
+           if e.type == KEYDOWN and e.key == K_1: ins = False
        screen.blit(fondo1, (0,0))
        screen.blit(fondo2, (0,100))
        screen.blit(nube1, (50,50))
@@ -83,35 +83,26 @@ def Morgan(escena):
     teclas = ""
     num = random.randint(1,2)
     solucion = ("d"*num + "a"*num) * 3
-    paso = 0
     while True:
         screen.fill((255,255,255))
         for e in event.get():
-            if e.type == KEYDOWN and K_p: 
-                if paso == 1: return 3
-                elif paso == 2: return 2
+            if e.type == KEYDOWN and e.key == K_p: return 3
             if e.type == KEYDOWN: 
-                mostrara1 = True
-                mostraracet = False
                 teclas = teclas + chr(e.key)
                 print(teclas)
         screen.blit(fondomor, (0,0))
         if mostraracet: screen.blit(ace_normal, (200,250))
         else: mostraracet = False 
-        if mostrara1:
-            mostraranim(acem, 10, 300, 350)
+        #if mostrara1:
+            #mostraranim(acem, 10, 300, 350)
         if len(teclas) == len(solucion):
-            mostraracet = True
-            mostrara1 = False
             if teclas == solucion:
                 ins4 = pirateFont.render("Felicidades pirata, puedes continuar!", True, (255,255,255))
                 screen.blit(ins4, (200, 500))
-                paso = 1
             else: 
                 ins5 = pirateFont.render("Morgan sigue muy fuerte! Vuelve a intentarlo", True, (255,255,255))
                 screen.blit(ins5, (150, 500))
-                paso = 2 
-        #load
+        
         ins1 = pirateFont.render(solucion, True, (255,255,255))
         ins2 = pirateFont.render("Usa las teclas: ", True, (255,255,255))
         ins3 = pirateFont.render("para derrotar a Morgan!", True, (255,255,255))
@@ -125,9 +116,13 @@ def Vista(escena):
     fondovis = transform.scale(fondovis, (800,600))
     #mixer.music.load("soundtrack1.mp3")
     #mixer.music.play(-1)
+    ace_normal = image.load("acetieso1.png")
+    ace_normal = transform.scale(ace_normal, (200, 200))
+    mostraracet = True
     teclas = ""
     num = random.randint(1,2)
     solucion = ("d"*num + "a"*num + "w"*num) * 4
+    mostraracet = True
     while True:
         screen.fill((255,255,255))
         for e in event.get():
@@ -135,8 +130,14 @@ def Vista(escena):
             if e.type == KEYDOWN and e.key == K_p: return 4
         if teclas == solucion: print("si")
         screen.blit(fondovis, (0,0))
-        ins2 = pirateFont.render("No lo dejes escapar!", True, (255,255,255))
-        screen.blit(ins2, (250,10))
+        if mostraracet: screen.blit(ace_normal, (200,250))
+        else: mostraracet = False 
+        ins1 = pirateFont.render(solucion, True, (255,255,255))
+        ins2 = pirateFont.render("Usa las teclas: ", True, (255,255,255))
+        ins3 = pirateFont.render("para derrotar a Morgan!", True, (255,255,255))
+        screen.blit(ins1, (300, 540))
+        screen.blit(ins2, (300,510))
+        screen.blit(ins3, (250, 570))
         display.flip()
         
 def Enel(escena):
@@ -145,19 +146,28 @@ def Enel(escena):
     cielo = transform.scale(cielo,(800,600))
     fondoenel = image.load("fondoenel.png")
     fondoenel = transform.scale(fondoenel, (800,600))
+    ace_normal = image.load("acetieso1.png")
+    ace_normal = transform.scale(ace_normal, (200, 200))
     teclas = ""
     num = random.randint(1,2)
     solucion = ("d"*num + "a"*num + "w"*num + "s") * 5
+    mostraracet = True
     while True:
         screen.fill((255,255,255))
         for e in event.get():
             if e.type == QUIT: sys.exit()
-        screen.blit(cielo, (0,0))
+            if e.type == KEYDOWN and e.key == K_p: return 4
+        if teclas == solucion: print("si")
         screen.blit(fondoenel, (0,0))
-        ins3 = pirateFont.render("Tan solo queda uno, acabalo!", True, (255,255,255))
-        screen.blit(ins3, (250, 10))
+        if mostraracet: screen.blit(ace_normal, (200,250))
+        else: mostraracet = False 
+        ins1 = pirateFont.render(solucion, True, (255,255,255))
+        ins2 = pirateFont.render("Usa las teclas: ", True, (255,255,255))
+        ins3 = pirateFont.render("para derrotar a Enel", True, (255,255,255))
+        screen.blit(ins1, (300, 540))
+        screen.blit(ins2, (300,510))
+        screen.blit(ins3, (250, 570))
         display.flip()
-        return escena
     
 
 escena = 1
