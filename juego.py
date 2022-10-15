@@ -21,8 +21,8 @@ def Inicio(escena):
     xm = 0
     logo = image.load("logojuego.png")
     logo = transform.scale(logo, (600, 250))
-    mixer.music.load("soundtrack2.mp3")
-    mixer.music.play(-1)
+    #mixer.music.load("soundtrack2.mp3")
+    #mixer.music.play(-1)
     ins = True 
     while True:
        screen.fill((255,255,255))
@@ -73,10 +73,10 @@ def Morgan(escena):
     global activo
     fondomor = image.load("fondomorgan.png")
     fondomor = transform.scale(fondomor, (800,600))
-    mixer.music.load("soundtrack1.mp3")
+    #mixer.music.load("soundtrack1.mp3")
     ace_normal = image.load("acetieso1.png")
     ace_normal = transform.scale(ace_normal, (200, 200))
-    mixer.music.play(-1)
+    #mixer.music.play(-1)
     mostrara1 = False
     teclas = ""
     num = random.randint(1,2)
@@ -102,8 +102,8 @@ def Vista(escena):
     global activo
     fondovis = image.load("fondovista.png")
     fondovis = transform.scale(fondovis, (800,600))
-    mixer.music.load("soundtrack1.mp3")
-    mixer.music.play(-1)
+    #mixer.music.load("soundtrack1.mp3")
+    #mixer.music.play(-1)
     teclas = ""
     num = random.randint(1,2)
     solucion = ("d"*num + "a"*num + "w"*num) * 4
