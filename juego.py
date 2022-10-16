@@ -61,7 +61,7 @@ def cargaranim(prefijo,sufijo,n):
 
 def mostraranim(images, freq, x, y):
     frame = int(time.time()*freq) % len(images)
-    screen.blit(images[frame], (100,100))
+    screen.blit(images[frame], (x,y))
     
 acem = cargaranim("acem/ace_",".png",8) 
 acev = cargaranim("acev/ace_",".png",7)
@@ -81,6 +81,7 @@ def Morgan(escena):
     teclas = ""
     num = random.randint(1,2)
     solucion = ("d"*num + "a"*num) * 3
+    x1 = 200
     while True:
         screen.fill((255,255,255))
         for e in event.get():
@@ -91,12 +92,14 @@ def Morgan(escena):
                 print(teclas)
                 mostrara1 = True
                 mostraracet = False
+                x1 = x1 + 20
             if e.type == KEYDOWN and e.key == K_a: 
                 teclas = teclas + chr(e.key)
+                x1 = x1 + 20
         screen.blit(fondomor, (0,0))
-        if mostraracet: screen.blit(ace_normal, (200,250)) 
+        if mostraracet: screen.blit(ace_normal, (x1,250)) 
         if mostrara1:
-            mostraranim(acem, 10, 300, 350)
+            mostraranim(acem, 10, x1, 250)
         if len(teclas) >= len(solucion):
             if teclas == solucion:
                 ins4 = pirateFont.render("Felicidades pirata, continua con P!", True, (255,255,255))
@@ -104,7 +107,7 @@ def Morgan(escena):
             else: 
                 ins5 = pirateFont.render("Vista sigue muy fuerte! Vuelve a intentarlo", True, (255,255,255))
                 screen.blit(ins5, (150, 500))
-        mostraranim(mor, 10, 500, 350)
+        mostraranim(mor, 10, 500, 250)
         ins1 = pirateFont.render(solucion, True, (255,255,255))
         ins2 = pirateFont.render("Usa las teclas: ", True, (255,255,255))
         ins3 = pirateFont.render("para derrotar a Morgan!", True, (255,255,255))
