@@ -1,4 +1,3 @@
-from pickle import FALSE
 from pygame import *
 import sys, time
 import random
@@ -38,12 +37,12 @@ def Inicio(escena):
        screen.blit(nube4, (700, 250))
        screen.blit(merry, (xm, 420))
        screen.blit(logo, (100, 0))
-       bv1 = pirateFont.render("Avanza para jugar", True, (255,255,255))
+       bv1 = pirateFont.render("Avanza con D para jugar", True, (255,255,255))
        bv2 = pirateFont.render("Presiona 1 para las instrucciones", True, (255,255,255))
        bv3 = pirateFont.render("Te enfrentaras a los villanos mas feroces de todo el mar, pero cuidado", True, (255,255,255))
        bv4 = pirateFont.render("solo puedes derrotarlos cuidadosamente con cierto patron de ataques", True, (255,255,255))
        if ins:
-        screen.blit(bv1, (300, 250))
+        screen.blit(bv1, (260, 250))
         screen.blit(bv2, (220, 270))
        else: 
         screen.blit(bv3, (0,250))
@@ -86,6 +85,7 @@ def Morgan(escena):
         screen.fill((255,255,255))
         for e in event.get():
             if e.type == KEYDOWN and e.key == K_p: return 3
+            if e.type == KEYDOWN and e.key == K_o: return 2
             if e.type == KEYDOWN and e.key == K_d: 
                 teclas = teclas + chr(e.key)
                 print(teclas)
@@ -97,9 +97,9 @@ def Morgan(escena):
         if mostraracet: screen.blit(ace_normal, (200,250)) 
         if mostrara1:
             mostraranim(acem, 10, 300, 350)
-        if len(teclas) == len(solucion):
+        if len(teclas) >= len(solucion):
             if teclas == solucion:
-                ins4 = pirateFont.render("Felicidades pirata, puedes continuar!", True, (255,255,255))
+                ins4 = pirateFont.render("Felicidades pirata, continua con P!", True, (255,255,255))
                 screen.blit(ins4, (200, 500))
             else: 
                 ins5 = pirateFont.render("Vista sigue muy fuerte! Vuelve a intentarlo", True, (255,255,255))
@@ -147,9 +147,9 @@ def Vista(escena):
         ins1 = pirateFont.render(solucion, True, (255,255,255))
         ins2 = pirateFont.render("Usa las teclas: ", True, (255,255,255))
         ins3 = pirateFont.render("para derrotar a Vista!", True, (255,255,255))
-        if len(teclas) == len(solucion):
+        if len(teclas) >= len(solucion):
             if teclas == solucion:
-                ins4 = pirateFont.render("Felicidades pirata, puedes continuar!", True, (255,255,255))
+                ins4 = pirateFont.render("Felicidades pirata, continua con P!", True, (255,255,255))
                 screen.blit(ins4, (200, 10))
             else: 
                 ins5 = pirateFont.render("Vista sigue muy fuerte! Vuelve a intentarlo", True, (255,255,255))
@@ -170,7 +170,7 @@ def Enel(escena):
     num = random.randint(1,2)
     solucion = ("d"*num + "a"*num + "w"*num + "s"*num) * 5
     mostraracet = True
-    mostrara1 = True
+    mostrara1 = False
     while True:
         screen.fill((255,255,255))
         for e in event.get():
@@ -187,7 +187,6 @@ def Enel(escena):
                 teclas = teclas + chr(e.key)
             if e.type == KEYDOWN and e.key == K_s: 
                 teclas = teclas + chr(e.key)
-        if teclas == solucion: print("si")
         screen.blit(fondoenel, (0,0))
         if mostraracet: screen.blit(ace_normal, (200,250))
         if mostrara1:
@@ -198,9 +197,9 @@ def Enel(escena):
         screen.blit(ins1, (200, 40))
         screen.blit(ins2, (300,10))
         screen.blit(ins3, (250, 70))
-        if len(teclas) == len(solucion):
+        if len(teclas) >= len(solucion):
             if teclas == solucion:
-                ins4 = pirateFont.render("Felicidades pirata, puedes continuar!", True, (255,255,255))
+                ins4 = pirateFont.render("Felicidades pirata, recoge tu botín con P", True, (255,255,255))
                 screen.blit(ins4, (200, 500))
             else: 
                 ins5 = pirateFont.render("Enel sigue muy fuerte! Vuelve a intentarlo", True, (255,255,255))
@@ -215,4 +214,3 @@ while True:
    elif escena == 2: escena = Morgan(escena)
    elif escena == 3: escena = Vista(escena)
    elif escena == 4: escena = Enel(escena)
-
