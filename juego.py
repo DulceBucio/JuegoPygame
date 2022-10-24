@@ -82,10 +82,11 @@ def Morgan(escena):
     num = random.randint(1,2)
     solucion = ("d"*num + "a"*num) * 3
     x1 = 200
+    pasa = False 
     while True:
         screen.fill((255,255,255))
         for e in event.get():
-            if e.type == KEYDOWN and e.key == K_p: return 3
+            if e.type == KEYDOWN and e.key == K_p and pasa: return 3
             if e.type == KEYDOWN and e.key == K_o: return 2
             if e.type == KEYDOWN and e.key == K_d: 
                 teclas = teclas + chr(e.key)
@@ -104,8 +105,9 @@ def Morgan(escena):
             if teclas == solucion:
                 ins4 = pirateFont.render("Felicidades pirata, continua con P!", True, (255,255,255))
                 screen.blit(ins4, (200, 500))
+                pasa = True 
             else: 
-                ins5 = pirateFont.render("Vista sigue muy fuerte! Vuelve a intentarlo", True, (255,255,255))
+                ins5 = pirateFont.render("Morgan sigue muy fuerte! Vuelve a intentarlo", True, (255,255,255))
                 screen.blit(ins5, (150, 500))
         mostraranim(mor, 10, 500, 250)
         ins1 = pirateFont.render(solucion, True, (255,255,255))
@@ -129,11 +131,12 @@ def Vista(escena):
     solucion = ("d"*num + "a"*num + "w"*num) * 4
     mostraracet = True
     mostrara1 = False 
+    pasa = False
     while True:
         screen.fill((255,255,255))
         for e in event.get():
             if e.type == QUIT: sys.exit()
-            if e.type == KEYDOWN and e.key == K_p: return 4
+            if e.type == KEYDOWN and e.key == K_p and pasa: return 4
             if e.type == KEYDOWN and e.key == K_o: return 3
             if e.type == KEYDOWN and e.key == K_d: 
                 teclas = teclas + chr(e.key)
@@ -155,6 +158,7 @@ def Vista(escena):
             if teclas == solucion:
                 ins4 = pirateFont.render("Felicidades pirata, continua con P!", True, (255,255,255))
                 screen.blit(ins4, (200, 490))
+                pasa = True
             else: 
                 ins5 = pirateFont.render("Vista sigue muy fuerte! Vuelve a intentarlo", True, (255,255,255))
                 screen.blit(ins5, (150, 490))
@@ -175,11 +179,12 @@ def Enel(escena):
     solucion = ("d"*num + "a"*num + "w"*num + "s"*num) * 5
     mostraracet = True
     mostrara1 = False
+    pasa = False
     while True:
         screen.fill((255,255,255))
         for e in event.get():
             if e.type == QUIT: sys.exit()
-            if e.type == KEYDOWN and e.key == K_p: return 5
+            if e.type == KEYDOWN and e.key == K_p and pasa: return 5
             if e.type == KEYDOWN and e.key == K_o: return 4
             if e.type == KEYDOWN and e.key == K_d: 
                 teclas = teclas + chr(e.key)
@@ -206,6 +211,7 @@ def Enel(escena):
             if teclas == solucion:
                 ins4 = pirateFont.render("Felicidades pirata, recoge tu botín con P", True, (255,255,255))
                 screen.blit(ins4, (200, 490))
+                pasa = True
             else: 
                 ins5 = pirateFont.render("Enel sigue muy fuerte! Vuelve a intentarlo", True, (255,255,255))
                 screen.blit(ins5, (150, 490))
