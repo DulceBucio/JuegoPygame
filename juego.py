@@ -218,7 +218,7 @@ def final(escena):
         screen.fill((255,255,255))
         for e in event.get():
             if e.type == QUIT: sys.exit()
-        screen.blit(fondof, (800,600))
+        screen.blit(fondof, (0,0))
         display.flip()
     
 
