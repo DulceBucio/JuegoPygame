@@ -66,7 +66,7 @@ acev = cargaranim("acev/ace_",".png",7)
 acee = cargaranim("acee/ace_",".png",5)
 mor = cargaranim("morgan/morgan_", ".png", 5)
 vis = cargaranim("vista/vista_", ".png", 5)
-
+enel = cargaranim("enel/enel_", ".png", 3)
 
 def Morgan(escena):
     fondomor = image.load("fondomorgan.png")
@@ -197,6 +197,7 @@ def Enel(escena):
         if mostraracet: screen.blit(ace_normal, (200,250))
         if mostrara1:
             mostraranim(acee, 10, 300, 250)
+        mostraranim(enel, 3, 500, 250)
         ins1 = pirateFont.render(solucion, True, (255,255,255))
         ins2 = pirateFont.render("Usa las teclas: ", True, (255,255,255))
         ins3 = pirateFont.render("para derrotar a Enel", True, (255,255,255))
