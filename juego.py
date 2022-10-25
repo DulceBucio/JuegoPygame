@@ -22,6 +22,8 @@ def Inicio(escena):
     logo = image.load("logojuego.png")
     logo = transform.scale(logo, (600, 250))
     ins = True 
+    mixer.music.load("soundtrack2.mp3")    
+    mixer.music.play(1)
     while True:
        screen.fill((255,255,255))
        for e in event.get():
