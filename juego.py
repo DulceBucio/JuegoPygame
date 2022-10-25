@@ -85,6 +85,7 @@ def Morgan(escena):
     mixer.music.load("soundtrack1.mp3")
     mixer.music.play(1)
     golpe = mixer.Sound("golpe.mp3")
+    mostrarv = True 
     while True:
         screen.fill((255,255,255))
         for e in event.get():
@@ -92,7 +93,6 @@ def Morgan(escena):
             if e.type == KEYDOWN and e.key == K_o: return 2
             if e.type == KEYDOWN and e.key == K_d: 
                 teclas = teclas + chr(e.key)
-                print(teclas)
                 mostrara1 = True
                 mostraracet = False
                 x1 = x1 + 20
@@ -110,10 +110,13 @@ def Morgan(escena):
                 ins4 = pirateFont.render("Felicidades pirata, continua con P!", True, (255,255,255))
                 screen.blit(ins4, (200, 500))
                 pasa = True 
+                mostrarv = False
+                mostraracet = True 
+                mostrara1 = False
             else: 
                 ins5 = pirateFont.render("Morgan sigue muy fuerte! Vuelve a intentarlo con O", True, (255,255,255))
                 screen.blit(ins5, (100, 500))
-        mostraranim(mor, 10, 500, 250)
+        if mostrarv: mostraranim(mor, 10, 500, 250)
         ins1 = pirateFont.render(solucion, True, (255,255,255))
         ins2 = pirateFont.render("Usa las teclas: ", True, (255,255,255))
         ins3 = pirateFont.render("para derrotar a Morgan!", True, (255,255,255))
@@ -137,6 +140,8 @@ def Vista(escena):
     mixer.music.load("soundtrack1.mp3")
     mixer.music.play(1)
     golpe = mixer.Sound("golpe.mp3")
+    mostrarv = True
+    x1 = 200
     while True:
         screen.fill((255,255,255))
         for e in event.get():
@@ -145,21 +150,23 @@ def Vista(escena):
             if e.type == KEYDOWN and e.key == K_o: return 3
             if e.type == KEYDOWN and e.key == K_d: 
                 teclas = teclas + chr(e.key)
-                print(teclas)
                 mostrara1 = True
                 mostraracet = False
+                x1 = x1 + 10
                 golpe.play()
             if e.type == KEYDOWN and e.key == K_a: 
                 teclas = teclas + chr(e.key)
+                x1 = x1 + 10
                 golpe.play()
             if e.type == KEYDOWN and e.key == K_w: 
                 teclas = teclas + chr(e.key)
+                x1 = x1 + 10
                 golpe.play()
         screen.blit(fondovis, (0,0))
         if mostrara1:
-            mostraranim(acev, 10, 300, 250)
-        if mostraracet: screen.blit(ace_normal, (200,250))
-        mostraranim(vis, 10, 500, 250)
+            mostraranim(acev, 10, x1, 250)
+        if mostraracet: screen.blit(ace_normal, (x1,250))
+        if mostrarv: mostraranim(vis, 10, 500, 250)
         ins1 = pirateFont.render(solucion, True, (255,255,255))
         ins2 = pirateFont.render("Usa las teclas: ", True, (255,255,255))
         ins3 = pirateFont.render("para derrotar a Vista!", True, (255,255,255))
@@ -168,6 +175,9 @@ def Vista(escena):
                 ins4 = pirateFont.render("Felicidades pirata, continua con P!", True, (255,255,255))
                 screen.blit(ins4, (200, 490))
                 pasa = True
+                mostrarv = False
+                mostraracet = True 
+                mostrara1 = False
             else: 
                 ins5 = pirateFont.render("Vista sigue muy fuerte! Vuelve a intentarlo con O", True, (255,255,255))
                 screen.blit(ins5, (100, 490))
@@ -192,6 +202,8 @@ def Enel(escena):
     mixer.music.load("soundtrack1.mp3")
     mixer.music.play(1)
     golpe = mixer.Sound("golpe.mp3")
+    mostrarv = True 
+    x1 = 200
     while True:
         screen.fill((255,255,255))
         for e in event.get():
@@ -200,24 +212,27 @@ def Enel(escena):
             if e.type == KEYDOWN and e.key == K_o: return 4
             if e.type == KEYDOWN and e.key == K_d: 
                 teclas = teclas + chr(e.key)
-                print(teclas)
                 mostrara1 = True
                 mostraracet = False
                 golpe.play()
+                x1 = x1 + 5
             if e.type == KEYDOWN and e.key == K_a: 
                 teclas = teclas + chr(e.key)
                 golpe.play()
+                x1 = x1 + 5
             if e.type == KEYDOWN and e.key == K_w: 
                 teclas = teclas + chr(e.key)
                 golpe.play()
+                x1 = x1 + 5
             if e.type == KEYDOWN and e.key == K_s: 
                 teclas = teclas + chr(e.key)
                 golpe.play()
+                x1 = x1 + 5
         screen.blit(fondoenel, (0,0))
-        if mostraracet: screen.blit(ace_normal, (200,250))
+        if mostraracet: screen.blit(ace_normal, (x1,250))
         if mostrara1:
-            mostraranim(acee, 10, 300, 250)
-        mostraranim(enel, 3, 500, 250)
+            mostraranim(acee, 10, x1, 250)
+        if mostrarv: mostraranim(enel, 3, 500, 250)
         ins1 = pirateFont.render(solucion, True, (255,255,255))
         ins2 = pirateFont.render("Usa las teclas: ", True, (255,255,255))
         ins3 = pirateFont.render("para derrotar a Enel", True, (255,255,255))
@@ -229,6 +244,9 @@ def Enel(escena):
                 ins4 = pirateFont.render("Felicidades pirata, recoge tu botin con P", True, (255,255,255))
                 screen.blit(ins4, (200, 490))
                 pasa = True
+                mostrarv = False
+                mostraracet = True 
+                mostrara1 = False
             else: 
                 ins5 = pirateFont.render("Enel sigue muy fuerte! Vuelve a intentarlo con O", True, (255,255,255))
                 screen.blit(ins5, (100, 490))
@@ -245,7 +263,7 @@ def final(escena):
             if e.type == QUIT: sys.exit()
         screen.blit(fondof, (0,0))
         text = pirateFont.render("Enhorabuena pirata!", True, (255,255,255))
-        screen.blit(text, (250, 0))
+        screen.blit(text, (300, 560))
         display.flip()
     
 
