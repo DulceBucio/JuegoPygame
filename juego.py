@@ -23,9 +23,9 @@ def Inicio(escena):
     logo = transform.scale(logo, (600, 250))
     ins = True 
     mixer.music.load("soundtrack2.mp3")
+    mixer.music.play(1)
     while True:
        screen.fill((255,255,255))
-       mixer.music.play(1)
        for e in event.get():
            if e.type == QUIT: sys.exit()
            if e.type == KEYDOWN and e.key == K_1: ins = False
@@ -81,7 +81,10 @@ def Morgan(escena):
     num = random.randint(1,2)
     solucion = ("d"*num + "a"*num) * 3
     x1 = 200
-    pasa = False 
+    pasa = False
+    mixer.music.load("soundtrack1.mp3")
+    mixer.music.play(1)
+    golpe = mixer.Sound("golpe.mp3")
     while True:
         screen.fill((255,255,255))
         for e in event.get():
@@ -93,9 +96,11 @@ def Morgan(escena):
                 mostrara1 = True
                 mostraracet = False
                 x1 = x1 + 20
+                golpe.play()
             if e.type == KEYDOWN and e.key == K_a: 
                 teclas = teclas + chr(e.key)
                 x1 = x1 + 20
+                golpe.play()
         screen.blit(fondomor, (0,0))
         if mostraracet: screen.blit(ace_normal, (x1,250)) 
         if mostrara1:
@@ -129,6 +134,9 @@ def Vista(escena):
     mostraracet = True
     mostrara1 = False 
     pasa = False
+    mixer.music.load("soundtrack1.mp3")
+    mixer.music.play(1)
+    golpe = mixer.Sound("golpe.mp3")
     while True:
         screen.fill((255,255,255))
         for e in event.get():
@@ -140,10 +148,13 @@ def Vista(escena):
                 print(teclas)
                 mostrara1 = True
                 mostraracet = False
+                golpe.play()
             if e.type == KEYDOWN and e.key == K_a: 
                 teclas = teclas + chr(e.key)
+                golpe.play()
             if e.type == KEYDOWN and e.key == K_w: 
                 teclas = teclas + chr(e.key)
+                golpe.play()
         screen.blit(fondovis, (0,0))
         if mostrara1:
             mostraranim(acev, 10, 300, 250)
@@ -178,6 +189,9 @@ def Enel(escena):
     mostraracet = True
     mostrara1 = False
     pasa = False
+    mixer.music.load("soundtrack1.mp3")
+    mixer.music.play(1)
+    golpe = mixer.Sound("golpe.mp3")
     while True:
         screen.fill((255,255,255))
         for e in event.get():
@@ -189,12 +203,16 @@ def Enel(escena):
                 print(teclas)
                 mostrara1 = True
                 mostraracet = False
+                golpe.play()
             if e.type == KEYDOWN and e.key == K_a: 
                 teclas = teclas + chr(e.key)
+                golpe.play()
             if e.type == KEYDOWN and e.key == K_w: 
                 teclas = teclas + chr(e.key)
+                golpe.play()
             if e.type == KEYDOWN and e.key == K_s: 
                 teclas = teclas + chr(e.key)
+                golpe.play()
         screen.blit(fondoenel, (0,0))
         if mostraracet: screen.blit(ace_normal, (200,250))
         if mostrara1:
@@ -219,6 +237,8 @@ def Enel(escena):
 def final(escena):
     fondof = image.load("escenafinal.jpg")
     fondof = transform.scale(fondof, (800,600))
+    mixer.music.load("soundtrackf.mp3")
+    mixer.music.play(1)
     while True:
         screen.fill((255,255,255))
         for e in event.get():
