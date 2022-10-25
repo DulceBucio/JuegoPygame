@@ -21,8 +21,6 @@ def Inicio(escena):
     xm = 0
     logo = image.load("logojuego.png")
     logo = transform.scale(logo, (600, 250))
-    #mixer.music.load("soundtrack2.mp3")
-    #mixer.music.play(-1)
     ins = True 
     while True:
        screen.fill((255,255,255))
@@ -69,13 +67,12 @@ acee = cargaranim("acee/ace_",".png",5)
 mor = cargaranim("morgan/morgan_", ".png", 5)
 
 
+
 def Morgan(escena):
     fondomor = image.load("fondomorgan.png")
     fondomor = transform.scale(fondomor, (800,600))
-    #mixer.music.load("soundtrack1.mp3")
     ace_normal = image.load("acetieso1.png")
     ace_normal = transform.scale(ace_normal, (200, 200))
-    #mixer.music.play(-1)
     mostrara1 = False
     mostraracet = True
     teclas = ""
@@ -107,8 +104,8 @@ def Morgan(escena):
                 screen.blit(ins4, (200, 500))
                 pasa = True 
             else: 
-                ins5 = pirateFont.render("Morgan sigue muy fuerte! Vuelve a intentarlo", True, (255,255,255))
-                screen.blit(ins5, (150, 500))
+                ins5 = pirateFont.render("Morgan sigue muy fuerte! Vuelve a intentarlo con O", True, (255,255,255))
+                screen.blit(ins5, (100, 500))
         mostraranim(mor, 10, 500, 250)
         ins1 = pirateFont.render(solucion, True, (255,255,255))
         ins2 = pirateFont.render("Usa las teclas: ", True, (255,255,255))
@@ -121,8 +118,6 @@ def Morgan(escena):
 def Vista(escena):
     fondovis = image.load("fondovista.png")
     fondovis = transform.scale(fondovis, (800,600))
-    #mixer.music.load("soundtrack1.mp3")
-    #mixer.music.play(-1)
     ace_normal = image.load("acetieso1.png")
     ace_normal = transform.scale(ace_normal, (200, 200))
     mostraracet = True
@@ -160,8 +155,8 @@ def Vista(escena):
                 screen.blit(ins4, (200, 490))
                 pasa = True
             else: 
-                ins5 = pirateFont.render("Vista sigue muy fuerte! Vuelve a intentarlo", True, (255,255,255))
-                screen.blit(ins5, (150, 490))
+                ins5 = pirateFont.render("Vista sigue muy fuerte! Vuelve a intentarlo con O", True, (255,255,255))
+                screen.blit(ins5, (100, 490))
         screen.blit(ins1, (200, 540))
         screen.blit(ins2, (300,510))
         screen.blit(ins3, (250, 570))
@@ -209,12 +204,12 @@ def Enel(escena):
         screen.blit(ins3, (250, 570))
         if len(teclas) >= len(solucion):
             if teclas == solucion:
-                ins4 = pirateFont.render("Felicidades pirata, recoge tu botín con P", True, (255,255,255))
+                ins4 = pirateFont.render("Felicidades pirata, recoge tu botin con P", True, (255,255,255))
                 screen.blit(ins4, (200, 490))
                 pasa = True
             else: 
-                ins5 = pirateFont.render("Enel sigue muy fuerte! Vuelve a intentarlo", True, (255,255,255))
-                screen.blit(ins5, (150, 490))
+                ins5 = pirateFont.render("Enel sigue muy fuerte! Vuelve a intentarlo con O", True, (255,255,255))
+                screen.blit(ins5, (100, 490))
         display.flip()
 
 def final(escena):
@@ -225,6 +220,8 @@ def final(escena):
         for e in event.get():
             if e.type == QUIT: sys.exit()
         screen.blit(fondof, (0,0))
+        text = pirateFont.render("Enhorabuena pirata!", True, (255,255,255))
+        screen.blit(text, (250, 0))
         display.flip()
     
 
