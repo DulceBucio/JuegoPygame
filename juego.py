@@ -23,9 +23,9 @@ def Inicio(escena):
     logo = transform.scale(logo, (600, 250))
     ins = True 
     mixer.music.load("soundtrack2.mp3")
-    mixer.music.play(1)
     while True:
        screen.fill((255,255,255))
+       mixer.music.play(1)
        for e in event.get():
            if e.type == QUIT: sys.exit()
            if e.type == KEYDOWN and e.key == K_1: ins = False
